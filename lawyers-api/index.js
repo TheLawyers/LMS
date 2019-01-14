@@ -22,10 +22,10 @@ const LawyersController = require('./controllers/LawyersController');
 app.use('/lawyers', LawyersController);
 
 const LawyersDashCont = require('./controllers/LawyersDashCont');
-app.use('/lawyers/Dashboard', LawyersDashCont);
+app.use('/lawyers/dashboard', LawyersDashCont);
 
 const DashboardController = require('./controllers/DashboardController');
-app.use('/Dashboard', DashboardController);
+app.use('/dashboard', DashboardController);
 
 app.listen(port, () => {
   console.log('---------------------------------------');
