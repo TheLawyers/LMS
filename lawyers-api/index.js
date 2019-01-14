@@ -21,6 +21,12 @@ app.get('/', (req, res) => {
 const LawyersController = require('./controllers/LawyersController');
 app.use('/lawyers', LawyersController);
 
+const DashboardController = require('./controllers/LawyersDashCont');
+app.use('/lawyers/Dashboard', DashboardController);
+
+const DashboardController = require('./controllers/DashboardController');
+app.use('/Dashboard', DashboardController);
+
 app.listen(port, () => {
   console.log('---------------------------------------');
   console.log('Express listening on localhost:' + port);
