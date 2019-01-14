@@ -3,19 +3,17 @@ const router = express.Router();
 
 const dashboard = require('../models/dashboard');
 
-const sendDashboard = (req, res) => res.json(res.locals.dashboards);
-
 // these methods e.x. "legalrights" is similar to "getAll"
 
-router.get('/', dashboard.legalrights, sendDashboard);
+router.get('/', 
+dashboard.legalrights,
+dashboard.criminal,
+dashboard.familystatus,
+dashboard.commercial, 
+dashboard.labour, 
+(req, res) => res.json(res.locals) );
 
-router.get('/', dashboard.criminal, sendDashboard);
 
-router.get('/', dashboard.familystatus, sendDashboard);
-
-router.get('/', dashboard.commercial, sendDashboard);
-
-router.get('/', dashboard.labour, sendDashboard);
 
 
 
