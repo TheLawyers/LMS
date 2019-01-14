@@ -14,8 +14,8 @@ cases.getAll = (req, res, next) => {
 }
 
 cases.create = (req, res, next) => {
-  db.one('INSERT INTO cases(name, legal_instruments, description, date, prosecultor, defendant, type, lawyers_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;',
-    [req.body.name, req.body.legal_instruments, req.body.description, req.body.date, req.body.prosecultor, req.body.defendant, req.body.type, req.body.lawyers_id])
+  db.one('INSERT INTO cases(name, legal_instruments, description, date, prosecutor, defendant, type, lawyers_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;',
+    [req.body.name, req.body.legal_instruments, req.body.description, req.body.date, req.body.prosecutor, req.body.defendant, req.body.type, req.body.lawyers_id])
     .then((data) => {
       res.locals.case = data;
       next();
@@ -27,8 +27,8 @@ cases.create = (req, res, next) => {
 }
 
 cases.update = (req, res, next) => {
-  db.one('UPDATE cases SET name=$1, legal_instruments=$2, description=$3, date=$4, prosecultor=$5, defendant=$6, type=$7  WHERE id=$8 RETURNING *;',
-  [req.body.name, req.body.legal_instruments, req.body.description, req.body.date, req.body.prosecultor, req.body.defendant, req.body.type, req.params.id])
+  db.one('UPDATE cases SET name=$1, legal_instruments=$2, description=$3, date=$4, prosecutor=$5, defendant=$6, type=$7  WHERE id=$8 RETURNING *;',
+  [req.body.name, req.body.legal_instruments, req.body.description, req.body.date, req.body.prosecutor, req.body.defendant, req.body.type, req.params.id])
     .then((data) => {
       res.locals.case = data;
       next();

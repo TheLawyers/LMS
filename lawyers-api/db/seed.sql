@@ -13,7 +13,7 @@ CREATE TABLE cases(
   legal_instruments int,
   description varchar,
   date date,
-  prosecultor varchar,
+  prosecutor varchar,
   defendant varchar,
   type varchar,
   lawyers_id int not null,
@@ -37,9 +37,14 @@ VALUES
 ('Layal');
 
 
-INSERT INTO cases(name, legal_instruments, description, date, prosecultor, defendant, type, lawyers_id)
+INSERT INTO cases(name, legal_instruments, description, date, prosecutor, defendant, type, lawyers_id)
 VALUES 
-('Mohammed with Brother', 1234, 'Family Problem', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 1);
+('Mohammed with Brother', 43237, 'Family Problem', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 1),
+('company GA with Students ', 44356, 'instructors cant explen ok becuse the student has hard understanding ', '2019-7-15', 'Masswrah', 'Jaki', 'Commercial ', 4),
+('Ali agnist sultan', 43212, 'Ali stiell sultan mobile', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 3),
+('Mohammed with Brother', 43222, 'Family Problem', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 3),
+('Mohammed with Brother', 43234, 'Family Problem', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 1);
+
 
 
 INSERT INTO corut(name, location, office, cases_id)
