@@ -21,8 +21,8 @@ app.get('/', (req, res) => {
 const LawyersController = require('./controllers/LawyersController');
 app.use('/lawyers', LawyersController);
 
-const DashboardController = require('./controllers/LawyersDashCont');
-app.use('/lawyers/Dashboard', DashboardController);
+const LawyersDashCont = require('./controllers/LawyersDashCont');
+app.use('/lawyers/Dashboard', LawyersDashCont);
 
 const DashboardController = require('./controllers/DashboardController');
 app.use('/Dashboard', DashboardController);
