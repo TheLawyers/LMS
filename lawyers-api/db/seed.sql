@@ -7,6 +7,13 @@ CREATE TABLE lawyers(
   name varchar
 );
 
+CREATE TABLE corut(
+  id serial primary key,
+  name varchar,
+  location varchar,
+  office varchar
+);
+
 CREATE TABLE cases(
   id serial primary key,
   name varchar,
@@ -17,16 +24,9 @@ CREATE TABLE cases(
   defendant varchar,
   type varchar,
   lawyers_id int not null,
-    foreign key(lawyers_id) references lawyers ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-CREATE TABLE corut(
-  id serial primary key,
-  name varchar,
-  location varchar,
-  office varchar,
-  cases_id int not null,
-  foreign key(cases_id) references cases ON DELETE CASCADE ON UPDATE CASCADE
+  court_id int not null,
+  foreign key(lawyers_id) references lawyers ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(court_id) references corut ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO lawyers(name) 
@@ -36,6 +36,9 @@ VALUES
 ('Hamad'),
 ('Layal');
 
+INSERT INTO corut(name, location, office)
+VALUES
+('Corut One', '123456,654321', 'b2');
 
 INSERT INTO cases(name, legal_instruments, description, date, prosecutor, defendant, type, lawyers_id)
 VALUES 
