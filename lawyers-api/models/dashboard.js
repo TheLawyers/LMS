@@ -29,8 +29,8 @@ dashboard.legalrights =function (req, res, next) {
           })
       }
 
-      dashboard.familyStatus =function (req, res, next) {
-        db.oneOrNone("SELECT COUNT(type) FROM cases WHERE type='Family Status';")  
+      dashboard.familystatus =function (req, res, next) {
+        db.oneOrNone("SELECT COUNT(type) FROM cases WHERE type='Family status';")  
           .then(function (result) {  
               console.log( result.count)
             res.locals.dashboard = result.count; 
@@ -42,8 +42,21 @@ dashboard.legalrights =function (req, res, next) {
           })
       }
 
-      dashboard.familyStatus =function (req, res, next) {
-        db.oneOrNone("SELECT COUNT(type) FROM cases WHERE type='Family Status';")  
+      dashboard.commercial =function (req, res, next) {
+        db.oneOrNone("SELECT COUNT(type) FROM cases WHERE type='Commercial';")  
+          .then(function (result) {  
+              console.log( result.count)
+            res.locals.dashboard = result.count; 
+            next();  
+          })
+          .catch(function (error) { 
+            console.log(error); 
+            next(); 
+          })
+      }
+
+      dashboard.labour =function (req, res, next) {
+        db.oneOrNone("SELECT COUNT(type) FROM cases WHERE type='labour';")  
           .then(function (result) {  
               console.log( result.count)
             res.locals.dashboard = result.count; 
