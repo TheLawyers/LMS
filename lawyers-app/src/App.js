@@ -6,10 +6,10 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      lowyers: [],
+     lawyer: [],
       dashboard: [],
-      dashboardLowyers: [],
-      lowyerName: ''
+      dashboardLawyers: [],
+      lawyerName: ''
     }
   }
 
@@ -20,7 +20,7 @@ class App extends Component {
     .then(data => {
       console.log(data);
       this.setState({
-        lowyers: data
+       lawyer: data
       })
     })
     .catch(error => {
