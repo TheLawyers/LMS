@@ -36,6 +36,7 @@ class App extends Component {
       <div className="App">
         {/* <HomePage/> */}
       </div>
+
     );
   }
 }
