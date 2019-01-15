@@ -5,7 +5,13 @@
 
 # technologies used
 
+React 
+React Boostrap 
+
+
 # approach 
+
+Started with the datbase, and then React. 
 
 # prototype 
 

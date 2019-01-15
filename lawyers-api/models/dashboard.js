@@ -30,7 +30,7 @@ dashboard.criminal = function (req, res, next) {
 }
 
 dashboard.familystatus = function (req, res, next) {
-    db.oneOrNone("SELECT COUNT(type) FROM cases WHERE type='Family Status';")
+    db.oneOrNone("SELECT COUNT(type) FROM cases WHERE type='Family';")
         .then(function (result) {
             console.log(result.count)
             res.locals.familystatus = result.count;

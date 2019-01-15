@@ -2,7 +2,7 @@ const db = require('../db/config');
 const cases = {};
 
 cases.getAll = (req, res, next) => {
-  db.manyOrNone("SELECT lawyers.lawyer_name  as lawyer , cases.* as casesName, corut.* as corut  from corut,  cases , lawyers  where cases.lawyers_id =lawyers.id and cases.court_id=corut.id;")
+  db.manyOrNone("SELECT lawyers.lawyer_name as lawyer , cases.* as casesName, corut.* as corut  from corut,  cases , lawyers  where cases.lawyers_id =lawyers.id and cases.court_id=corut.id;")
     .then((data) => {
       res.locals.cases = data;
       next();
