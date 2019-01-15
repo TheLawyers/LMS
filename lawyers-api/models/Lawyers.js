@@ -1,4 +1,4 @@
-const db = require('../db/config');
+/* const db = require('../db/config');
 const lawyers = {};
 
 lawyers.getAll = (req, res, next) => {
@@ -50,4 +50,4 @@ lawyers.delete = (req, res, next) => {
     })
 }
 
-module.exports = lawyers;
+module.exports = lawyers; */
