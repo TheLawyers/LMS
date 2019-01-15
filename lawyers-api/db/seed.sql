@@ -53,3 +53,7 @@ VALUES
 INSERT INTO corut(name, location, office, cases_id)
 VALUES
 ('Corut One', '123456,654321', 'b2', 1);
+
+INSERT INTO cases(name, legal_instruments, description, date, prosecultor, defendant, type, lawyers_id, court_id)
+VALUES 
+('Mohammed with Brother', 1234, 'Family Problem', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 1, 1);
