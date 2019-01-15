@@ -1,22 +1,40 @@
 import React, { Component } from 'react';
 import './App.css';
-import ShowLanding from './components/ShowLanding';
-
-const API_URL = 'http://localhost:3000'
+//import HomePage from './components/HomePage';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      lowyers: [],
+      dashboard: [],
+      dashboardLowyers: [],
+      lowyerName: ''
+    }
+  }
+
+  componentDidMount(){
+    const url = 'http://localhost:3000/lawyers';
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      this.setState({
+        lowyers: data
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+
+
+
   render() {
     return (
-      <div>
-        <header>My Shows</header>
-        {this.renderContent()}
-        {this.state.modal ? 
-          <ShowForm 
-            handleSubmit={this.handleSubmit.bind(this)} 
-            toggleModal={this.toggleModal.bind(this)}
-            activeShow={this.state.activeShow}
-            /> : ''}
-            <show/> 
+      <div className="App">
+        {/* <HomePage/> */}
       </div>
 
     );
