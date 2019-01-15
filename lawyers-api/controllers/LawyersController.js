@@ -9,9 +9,9 @@ const sendLawyers = (req, res) => res.json({lawyers: res.locals.lawyers, cases: 
 const sendLawyer = (req, res) => res.json({lawyers: res.locals.lawyer, cases: res.locals.case, corut: res.locals.corut});
 const sendSuccess = (req, res) => res.json({ message: 'success' });
 
-router.get('/', lawyers.getAll, cases.getAll, corut.getAll, sendLawyers);
-router.post('/', lawyers.create, cases.create, corut.create, sendLawyer);
-router.put('/:id', lawyers.update, cases.update, corut.update, sendLawyer);
-router.delete('/:id', lawyers.delete, cases.delete, corut.delete, sendSuccess);
+router.get('/', cases.getAll, sendLawyers);
+router.post('/', cases.create, corut.create, sendLawyer);
+router.put('/:id', cases.update, corut.update, sendLawyer);
+router.delete('/:id', cases.delete, sendSuccess);
 
 module.exports = router;
