@@ -20,7 +20,7 @@ lawdashboard.oneCase = function (req, res, next) {
 // no.case 
 // typeof.case for each lawyers
 lawdashboard.criminal = function (req, res, next) {
-    db.oneOrNone("SELECT COUNT(cases) FROM lawyers INNER JOIN cases on lawyers.id = cases.id WHERE cases.type='Criminal';")
+    db.oneOrNone("SELECT COUNT(cases) FROM lawyers INNER JOIN cases on lawyers.id = cases.lawyers_id WHERE cases.type='Criminal';")
         .then(function (result) {
             console.log(result.count)
             res.locals.criminal = result.count;
