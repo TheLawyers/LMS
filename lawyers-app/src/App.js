@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
-//import HomePage from './components/HomePage';
 import Show from './components/Show';
 import Profile from './components/Profile';
+
+
 import { button } from 'react-bootstrap';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-     lawyer: [],
+      lawyersData: [],
       dashboard: [],
-      dashboardLawyers: [],
-      lawyerName: '', 
+      dashboardLowyers: [],
+      lawyerName: '',
+      displayProfile: false,
       activeShow: 'show'
-      
-
     }
   }
 
@@ -24,13 +24,18 @@ class App extends Component {
 
 
   componentDidMount(){
+    this.fetchLawyers();
+    this.fetchDashData();
+  }
+
+  fetchLawyers() {
     const url = 'http://localhost:3000/lawyers';
     fetch(url)
     .then(response => response.json())
     .then(data => {
       console.log(data);
       this.setState({
-       lawyer: data
+        lawyersData: data
       })
     })
     .catch(error => {
@@ -38,7 +43,39 @@ class App extends Component {
     })
   }
 
+  fetchDashData() {
 
+  }
+
+  hendelName(name){
+    //console.log(name)
+    this.setState({
+      lawyerName: name,
+      displayProfile: true 
+    })
+  }
+
+  renderProfile(data){
+    // return data.map((el, index) => {
+    //   return el.lawyer === this.state.lawyerName ? <Profile lawyer={el} key={index} /> : ''
+    // })
+
+console.log(data); 
+
+
+    let lawyerProfile = data.filter( d => d.lawyer === this.state.lawyerName);
+    console.log("lawyerProfilelawyerProfile\n\n " , lawyerProfile); 
+    return (<Profile data={lawyerProfile }  /> )
+  }
+
+  renderShow(){
+
+    return  <Show hendelName={this.hendelName.bind(this)} />
+  }
+
+  /* renderShowCases(data){
+    return <ShowCases  />
+  } */
 // (){
 //   // set state to active show = show 
 // }
@@ -59,10 +96,12 @@ goProfile(show) {
 
   render() {
     return (
-      <div className="app">
-      <header> 
+      <div className="App">
+      {this.state.displayProfile ? this.renderProfile(this.state.lawyersData) : this.renderShow() }
         
-      </header>
+        
+        {/* {this.state.lawyerName !== '' ? this.renderProfile(this.state.lawyers): ''} */}
+     
       <div className="logo">Lawyers Managment System</div>
      <div className="home-btn">
      <button className="btn btn-primary btn-sm"onClick={this.goHome.bind(this)}>Home</button>
