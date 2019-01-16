@@ -48,7 +48,7 @@ lawdashboard.legalrights = function (req, res, next) {
 
 
 lawdashboard.familystatus = function (req, res, next) {
-    db.oneOrNone("SELECT COUNT(cases) FROM lawyers INNER JOIN cases on lawyers.id = cases.lawyers_id WHERE cases.type='Family Status';")
+    db.oneOrNone("SELECT COUNT(cases) FROM lawyers INNER JOIN cases on lawyers.id = cases.lawyers_id WHERE cases.type='Family';")
         .then(function (result) {
             console.log(result.count)
             res.locals.familystatus = result.count;
