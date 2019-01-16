@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ShowEdit from './ShowEdit';
+// import ShowEdit from './ShowEdit';
 
 class Profile extends Component {
   constructor() {
@@ -68,7 +68,7 @@ class Profile extends Component {
   }
 
   renderEdit() {
-    return <ShowEdit updateCase={this.updateCase.bind(this)} data={this.state.case} />
+    // return <ShowEdit updateCase={this.updateCase.bind(this)} data={this.state.case} />
   }
 
   renderShow(data) {

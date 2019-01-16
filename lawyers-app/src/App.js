@@ -12,9 +12,14 @@ class App extends Component {
       dashboard: [],
       dashboardLowyers: [],
       lawyerName: '',
-      displayProfile: false
+      displayProfile: false,
+      activeShow: 'show'
     }
   }
+
+  // change view function 
+
+
 
   componentDidMount(){
     this.fetchLawyers();
@@ -69,6 +74,22 @@ console.log(data);
   /* renderShowCases(data){
     return <ShowCases  />
   } */
+// (){
+//   // set state to active show = show 
+// }
+
+goHome(show) {
+  this.setState({
+    activeShow: "show"
+  })
+}
+
+goProfile(show) {
+  this.setState({
+    activeShow: "profile"
+  })
+}
+
 
 
   render() {
@@ -78,6 +99,18 @@ console.log(data);
         
         
         {/* {this.state.lawyerName !== '' ? this.renderProfile(this.state.lawyers): ''} */}
+     
+      <div className="logo">Lawyers Managment System</div>
+     <div className="home-btn">
+     <button onClick={this.goHome.bind(this)}>Home</button>
+     <button onClick={this.goProfile.bind(this)}>Profile</button>
+
+     </div>
+
+{this.state.activeShow === 'show' ? <Show/> : ''}
+{this.state.activeShow === 'profile' ? <Profile/> : ''}
+
+        {/* <HomePage/> */}
       </div>
     );
   }
