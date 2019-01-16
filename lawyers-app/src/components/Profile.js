@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import ShowEdit from './ShowEdit';
+import LawDashboard from './DashboardLowyers';
 
 class Profile extends Component {
   constructor() {
@@ -114,8 +115,12 @@ class Profile extends Component {
         <button>Create</button>
         {this.state.showCases ? this.renderCases() : this.renderShow(this.state.case)}
 
+      <LawDashboard
+        lawyerName={this.props.lawyerName}
+        dashboardLowyers={this.props.dashboardLowyers} />
+    </div>
 
-      </div>
+    
     );
   }
 }

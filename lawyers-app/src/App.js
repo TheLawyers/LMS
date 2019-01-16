@@ -1,116 +1,116 @@
+// import LawDashboard from './components/DashboardLowyers'
 import React, { Component } from 'react';
 import './App.css';
 import Show from './components/Show';
 import Profile from './components/Profile';
-//import ShowCases from './components/ShowCases';
+import Dashboard from './components/Dashboard'
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       lawyersData: [],
       dashboard: [],
       dashboardLowyers: [],
       lawyerName: '',
-      displayProfile: false,
-      activeShow: 'show'
+      displayProfile: false
     }
   }
 
-  // change view function 
-
-
-
-  componentDidMount(){
+  componentDidMount() {
     this.fetchLawyers();
     this.fetchDashData();
+    this.fetchDashLaw();
   }
 
   fetchLawyers() {
     const url = 'http://localhost:3000/lawyers';
     fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      this.setState({
-        lawyersData: data
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({
+          lawyersData: data
+        })
       })
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   fetchDashData() {
-
+    const url = 'http://localhost:3000/Dashboard';
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({
+          dashboard: data
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
-  hendelName(name){
+  fetchDashLaw(id) {
+    id = 2
+    const url = `http://localhost:3000/lawyers/Dashboard/${id}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // const dataa = this.state.lawyersData.filter(data => data.id !== id)
+        // console.log(dataa);
+        this.setState({
+          dashboardLowyers: data
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+
+  hendelName(name) {
     //console.log(name)
     this.setState({
       lawyerName: name,
-      displayProfile: true 
+      displayProfile: true
     })
   }
 
-  renderProfile(data){
+  renderProfile(data) {
     // return data.map((el, index) => {
     //   return el.lawyer === this.state.lawyerName ? <Profile lawyer={el} key={index} /> : ''
     // })
 
-console.log(data); 
+    const lawyerProfile = (data.cases).filter(d => d.lawyer === this.state.lawyerName);
+    console.log("lawyerProfilelawyerProfile\n\n ", lawyerProfile);
+    return (<Profile data={lawyerProfile} dashboardLowyers={this.state.dashboardLowyers} />
 
-
-    let lawyerProfile = data.filter( d => d.lawyer === this.state.lawyerName);
-    console.log("lawyerProfilelawyerProfile\n\n " , lawyerProfile); 
-    return (<Profile data={lawyerProfile }  /> )
+    )
   }
 
-  renderShow(){
+  renderShow() {
 
-    return  <Show hendelName={this.hendelName.bind(this)} />
+    return <div> <Show hendelName={this.hendelName.bind(this)} />
+      <Dashboard
+        dashboard={this.state.dashboard}
+      /></div>
   }
 
   /* renderShowCases(data){
     return <ShowCases  />
   } */
-// (){
-//   // set state to active show = show 
-// }
-
-goHome(show) {
-  this.setState({
-    activeShow: "show"
-  })
-}
-
-goProfile(show) {
-  this.setState({
-    activeShow: "profile"
-  })
-}
-
 
 
   render() {
     return (
       <div className="App">
-      {this.state.displayProfile ? this.renderProfile(this.state.lawyersData) : this.renderShow() }
-        
+        {this.state.displayProfile ? this.renderProfile(this.state.lawyersData) : this.renderShow()}
         
         {/* {this.state.lawyerName !== '' ? this.renderProfile(this.state.lawyers): ''} */}
-     
-      <div className="logo">Lawyers Managment System</div>
-     <div className="home-btn">
-     <button onClick={this.goHome.bind(this)}>Home</button>
-     <button onClick={this.goProfile.bind(this)}>Profile</button>
-
-     </div>
-
-{this.state.activeShow === 'show' ? <Show/> : ''}
-{this.state.activeShow === 'profile' ? <Profile/> : ''}
-
-        {/* <HomePage/> */}
       </div>
     );
   }

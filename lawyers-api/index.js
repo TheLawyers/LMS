@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require('express');
 const logger = require('morgan');
+const port = 3000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
@@ -17,9 +18,9 @@ app.get('/', (req, res) => {
   res.send('The Lawyers ..');
 })
 //athuntcation
-const port = process.env.DEV_PORT;
-const authController = require("./controllers/authController");
-app.use("/api/", authController);
+// const port = process.env.DEV_PORT;
+// const authController = require("./controllers/authController");
+// app.use("/api/", authController);
 
 // ADD YOUR CONTROLLER HERE!!!
 const LawyersController = require('./controllers/LawyersController');

@@ -18,8 +18,10 @@ var pgInstance = pgPromise();
 var config = {
   host: "localhost",
   port: 5432,
-  database: "express_users",
-  user: process.env.DB_USER
+  database: 'lawyers_db',
+  user: 'masarah', // your username here!!
+  // database: "express_users",
+  // user: process.env.DB_USER
 };
 
 var connection = pgInstance(config);
