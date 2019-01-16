@@ -12,7 +12,9 @@ cases.getAll = (req, res, next) => {
       next();
     })
 }
-
+// SELECT lawyers.lawyer_name as lawyer , cases.* as casesName, corut.* as corut  from corut,  cases , lawyers  where cases.lawyers_id =lawyers.id and cases.court_id=corut.id;
+//SELECT lawyers_id, COUNT(EXTRACT(MONTH FROM date)) as month_count, EXTRACT(MONTH FROM date) as month  , cases.lawyers_id as lawyer from corut, cases ORDER BY month_count ;
+// SELECT lawyers_id  EXTRACT(MONTH FROM date) as month_count, EXTRACT(MONTH FROM date) as month from cases GROUP BY EXTRACT(MONTH FROM date) ORDER BY month_count;
 cases.create = (req, res, next) => {
   db.one('INSERT INTO cases(case_name, legal_instruments, description, date, prosecultor, defendant, type, lawyers_id, court_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;',
     [req.body.case_name, req.body.legal_instruments, req.body.description, req.body.date, req.body.prosecultor, req.body.defendant, req.body.type, req.body.lawyers_id, req.body.court_id])
