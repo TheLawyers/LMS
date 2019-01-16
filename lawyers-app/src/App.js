@@ -3,6 +3,7 @@ import './App.css';
 //import HomePage from './components/HomePage';
 import Show from './components/Show';
 import Profile from './components/Profile';
+import { button } from 'react-bootstrap';
 
 class App extends Component {
   constructor(){
@@ -64,8 +65,8 @@ goProfile(show) {
       </header>
       <div className="logo">Lawyers Managment System</div>
      <div className="home-btn">
-     <button onClick={this.goHome.bind(this)}>Home</button>
-     <button onClick={this.goProfile.bind(this)}>Profile</button>
+     <button className="btn btn-primary btn-sm"onClick={this.goHome.bind(this)}>Home</button>
+     <button className="btn btn-primary btn-sm" onClick={this.goProfile.bind(this)}>Profile</button>
 
      </div>
 
@@ -74,6 +75,9 @@ goProfile(show) {
 
         {/* <HomePage/> */}
       </div>
+
+      // @flow 
+
 
     );
   }
