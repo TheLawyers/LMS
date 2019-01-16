@@ -21,7 +21,7 @@ class Show extends Component {
         event.preventDefault();
         this.props.hendelName(this.state.inputName)
     }
-  
+
   render() {
     return (
       <div>

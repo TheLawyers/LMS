@@ -14,13 +14,27 @@ CREATE TABLE corut(
   office varchar
 );
 
+-- for Athuntcation
+CREATE TABLE users(
+  id serial primary key,
+  name varchar NOT NULL,
+  email varchar UNIQUE NOT NULL,
+  password_digest varchar NOT NULL,
+  is_admin boolean DEFAULT 'f'
+);
+
 CREATE TABLE cases(
   id serial primary key,
   case_name varchar,
   legal_instruments int,
   description varchar,
+<<<<<<< HEAD
   date DATE,
   prosecultor varchar,
+=======
+  date date,
+  prosecutor varchar,
+>>>>>>> 2d38e1c2daa2b7a345998f8fa84e7b6d08a27fa2
   defendant varchar,
   type varchar,
   lawyers_id int not null,
@@ -42,9 +56,22 @@ VALUES
 ('Supreme and District Courts Brisbane', '415 George St, Brisbane City QLD 4000, Australia', 'A1'),
 ('Kern County Superior Court', '1415 Truxtun Ave #212, Bakersfield, CA 93301', 'C2');
 
+INSERT INTO cases(name, legal_instruments, description, date, prosecutor, defendant, type, lawyers_id)
+VALUES 
+('Mohammed with Brother', 43237, 'Family Problem', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 1),
+('company GA with Students ', 44356, 'instructors cant explen ok becuse the student has hard understanding ', '2019-7-15', 'Masswrah', 'Jaki', 'Commercial ', 4),
+('Ali agnist sultan', 43212, 'Ali stiell sultan mobile', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 3),
+('Mohammed with Brother', 43222, 'Family Problem', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 3),
+('Mohammed with Brother', 43234, 'Family Problem', '2019-1-15', 'Khaled', 'Mohammed', 'Family Status', 1);
 
 
-INSERT INTO cases( legal_instruments, description, date, prosecultor, defendant, type, lawyers_id, court_id)
+
+INSERT INTO corut(name, location, office, cases_id)
+VALUES
+('Corut One', '123456,654321', 'b2', 1);
+
+INSERT INTO cases(name, legal_instruments, description, date, prosecultor, defendant, type, lawyers_id, court_id)
+INSERT INTO cases(case_name, legal_instruments, description, date, prosecultor, defendant, type, lawyers_id, court_id)
 VALUES 
 (1234, 'Divore', '2019-1-15', 'Khaled', 'Mohammed', 'Family', 1, 1),
 (738, 'Conflict between business partners','2019-2-15', 'Khaled', 'Mohammed', 'Commercial', 2, 2),
