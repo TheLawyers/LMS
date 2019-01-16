@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 //import HomePage from './components/HomePage';
+import Show from './components/Show';
+import Profile from './components/Profile';
 
 class App extends Component {
   constructor(){
@@ -9,9 +11,16 @@ class App extends Component {
      lawyer: [],
       dashboard: [],
       dashboardLawyers: [],
-      lawyerName: ''
+      lawyerName: '', 
+      activeShow: 'show'
+      
+
     }
   }
+
+  // change view function 
+
+
 
   componentDidMount(){
     const url = 'http://localhost:3000/lawyers';
@@ -29,11 +38,40 @@ class App extends Component {
   }
 
 
+// (){
+//   // set state to active show = show 
+// }
+
+goHome(show) {
+  this.setState({
+    activeShow: "show"
+  })
+}
+
+goProfile(show) {
+  this.setState({
+    activeShow: "profile"
+  })
+}
+
 
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
+      <header> 
+        
+      </header>
+      <div className="logo">Lawyers Managment System</div>
+     <div className="home-btn">
+     <button onClick={this.goHome.bind(this)}>Home</button>
+     <button onClick={this.goProfile.bind(this)}>Profile</button>
+
+     </div>
+
+{this.state.activeShow === 'show' ? <Show/> : ''}
+{this.state.activeShow === 'profile' ? <Profile/> : ''}
+
         {/* <HomePage/> */}
       </div>
 
