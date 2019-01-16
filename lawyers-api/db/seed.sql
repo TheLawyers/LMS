@@ -14,6 +14,15 @@ CREATE TABLE corut(
   office varchar
 );
 
+-- for Athuntcation
+CREATE TABLE users(
+  id serial primary key,
+  name varchar NOT NULL,
+  email varchar UNIQUE NOT NULL,
+  password_digest varchar NOT NULL,
+  is_admin boolean DEFAULT 'f'
+);
+
 CREATE TABLE cases(
   id serial primary key,
   case_name varchar,
