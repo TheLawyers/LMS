@@ -7,6 +7,7 @@
 
 React 
 React Boostrap 
+react-chartjs-2
 
 
 # approach 
