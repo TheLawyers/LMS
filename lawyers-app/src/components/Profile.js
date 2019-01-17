@@ -15,12 +15,14 @@ class Profile extends Component {
   }
 
   handelSubmit(data) {
+    console.log(data)
     this.setState({
       case: data,
       showCases: false,
       edite: false,
       create: false
     })
+
   }
 
   handelShowEdite(event) {
@@ -41,7 +43,7 @@ class Profile extends Component {
     console.log("\n\n\n\n\n\n", "something")
     console.log(this.state.create)
   }
-  
+
 
   handleSubmit(data) {
     if (this.state.case) {
@@ -51,7 +53,7 @@ class Profile extends Component {
     }
   }
 
-  
+
 
   deleteCase(cases) {
     const url = `http://localhost:3000/lawyers/${cases.id}`;
@@ -134,10 +136,14 @@ class Profile extends Component {
   renderCases() {
     return this.props.data.map((el, index) => {
       return (
-        <div key={index} onClick={() => this.handelSubmit(el)}>
-          <p> Legal Instruments: {el.legal_instruments}</p>
-          <p> Description: {el.description}</p>
-          <p>date: {el.date}</p>
+        <div>
+          <div key={index} onClick={() => this.handelSubmit(el)}>
+            <p> Legal Instruments: {el.legal_instruments}</p>
+            <p> Description: {el.description}</p>
+            <p>date: {el.date}</p>
+          </div>
+          {this.props.fetchDashLaw(el.lawyers_id)}
+
         </div>
       );
     })
@@ -145,15 +151,16 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <h1>Lawyer: {this.props.data[0].lawyer}</h1>
+        <h1>Lawyer: {this.props.data[1].lawyer}</h1>
         <h2> cases </h2>
         <button onClick={this.handelShowCreate.bind(this)}>Create</button>
         {this.state.showCases ? this.renderCases() : this.renderShow(this.state.case)}
         {this.state.create ? this.renderShowForm() : false}
-        {this.props.fetchDashLaw(this.props.data[0].lawyers_id)}
         <LawDashboard
           // lawyerName={this.props.lawyerName}
           dashboardLowyers={this.props.dashboardLowyers} />
+
+
       </div>
     );
   }

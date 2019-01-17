@@ -5,6 +5,8 @@ import Show from './components/Show';
 import Profile from './components/Profile';
 import Dashboard from './components/Dashboard'
 
+import FooterPage from './components/FooterPage'
+
 class App extends Component {
   constructor() {
     super();
@@ -13,7 +15,9 @@ class App extends Component {
       dashboard: [],
       dashboardLowyers: [],
       lawyerName: '',
-      displayProfile: false
+      displayProfile: false,
+      activeShow: 'show'
+
     }
   }
 
@@ -99,32 +103,88 @@ class App extends Component {
 
     return <div>
       <div className="imgheader">
+
+    
+
         <Show hendelName={this.hendelName.bind(this)} />
       </div>
-      <Dashboard
-        dashboard={this.state.dashboard}
-      /></div>
+
+      <div className="info1">
+
+        <div className="info12"><h2> News</h2></div>
+
+        <div className="info12"><h2>Upcoming today </h2></div>
+
+        <div className="info12"> <h2> Dashboard</h2>
+          <Dashboard
+            dashboard={this.state.dashboard}
+          /></div>
+
+      </div>
+
+
+
+
+    </div> // landing end 
+
+
   }
 
   /* renderShowCases(data){
     return <ShowCases  />
   } */
 
+  goHome(show) {
+    this.setState({
+      activeShow: "show"
+    })
+  }
+
+  goProfile(show) {
+    this.setState({
+      activeShow: "profile"
+    })
+  }
+
 
   render() {
     return (
       <div className="App">
 
-        <div className="header">
-          <div className="bar">
-            <h2>LMS</h2>
+        <div className="navbar navbar-inverse">
+          <h1 className="navbar-brand" > <img src="https://i.imgur.com/f2rbFxG.png" style={{width:100, marginTop: -7}} /></h1>
+
+        <h1 className="lms">Law Managment System</h1>
+          <div className="navbar-header">
+            <button type="button" className="btn btn-secondary" onClick={this.goHome.bind(this)}>Home</button> 
+           
+            <button type="button" className="btn btn-secondary" onClick={this.goProfile.bind(this)}>Profile</button>
+        
+            <button type="button" className="btn btn-secondary" onClick={this.goProfile.bind(this)}>Sign up</button>
           </div>
+
+          {/* <ul class="navbar navbar-inverse">
+      <li><button type="button" className="btn btn-secondary"onClick={this.goHome.bind(this)}>Home</button></li>
+      <li><button  type="button" className="btn btn-secondary" onClick={this.goProfile.bind(this)}>Profile</button></li>
+    </ul>
+        */}
+
+        <FooterPage/> 
+
         </div>
 
+
+
+
+
         {this.state.displayProfile ? this.renderProfile(this.state.lawyersData) : this.renderShow()}
+        {/* {this.state.activeShow === 'show' ? <Show /> : ''}
+        {this.state.activeShow === 'profile' ? <Profile /> : ''} */}
 
         {/* {this.state.lawyerName !== '' ? this.renderProfile(this.state.lawyers): ''} */}
       </div>
+
+
     );
   }
 }
