@@ -1,7 +1,6 @@
 # TheLawyers
 
-
-
+Signle web app that is created using React. It's very useful for any law office because it keeps all 
 
 # A link to your hosted working app
 
@@ -10,7 +9,6 @@ Node js
 NPM 
 React 
 React Boostrap 
-
 
 # approach 
 
@@ -23,6 +21,10 @@ https://www.figma.com/file/NVKbHolGoKvIYPBcOS2mrfFU/Untitled?node-id=0%3A1
 Feel free to add a screenshot or two of the figma prototype directly in the ReadMe for some attention-grabbing flair.
 
 # Installation instructions 
+
+npm install
+npm start 
+
 
 # user stories 
 
