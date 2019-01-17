@@ -37,8 +37,10 @@ const DashboardLowyers = (props) => {
         }]
     };
 
+    // console.log("BUSY", props.dashboardLowyers.busiest)
+
     // const busy = {
-    //     months: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month) : '',
+    //     months: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month ) : '',
     //     counts: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month_count) : '',
     // }
 

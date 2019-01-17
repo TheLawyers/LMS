@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  justify-content: center
 }
 
 /* .App-logo {
@@ -23,35 +22,34 @@
   color: #61dafb;
 } */
 .header{
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-height: 70px;
-background-color: #667b83
-}
-.imgheader{
-  background-image: url("https://www.nmcourts.gov/uploads/MediaGallery/e4f7e02d8179454f86dfe7f56a22a547/slide002_1.jpg");
-  height: 350px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.7;
-  justify-content: center;
-  text-align: center
-
-  /* align-items: center;
-  align-content: center;
-  align-self: center */
-}
-
-.inputName{
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  align-self: center ;
-  text-align: center
-}
-
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 70px;
+  background-color: #667b83
+  }
+  .imgheader{
+    background-image: url("https://www.nmcourts.gov/uploads/MediaGallery/e4f7e02d8179454f86dfe7f56a22a547/slide002_1.jpg");
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.7;
+    justify-content: center;
+    text-align: center
+  
+    /* align-items: center;
+    align-content: center;
+    align-self: center */
+  }
+  
+  .inputName{
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center ;
+    text-align: center
+  }
 
 @keyframes App-logo-spin {
   from {

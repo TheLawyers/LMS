@@ -20,6 +20,7 @@ class Show extends Component {
     handelSubmit(event){
         event.preventDefault();
         this.props.hendelName(this.state.inputName)
+        
     }
 
   render() {
