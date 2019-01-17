@@ -4,11 +4,18 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
+<<<<<<< HEAD
     "chart.js": "^2.7.3",
     "mdbreact": "^4.8.7",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-chartjs-2": "^2.7.4",
+=======
+    "flow-bin": "^0.90.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.7.0",
+    "react-bootstrap": "^0.32.4",
+>>>>>>> c78f0085e3dc732836e3b886d1171120bc2c2fe2
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3"
   },
@@ -16,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow"
   },
   "eslintConfig": {
     "extends": "react-app"

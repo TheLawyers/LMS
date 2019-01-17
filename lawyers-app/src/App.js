@@ -122,7 +122,6 @@ class App extends Component {
 
       </div>
 
-<FooterPage/> 
 
 
 
@@ -170,7 +169,10 @@ class App extends Component {
     </ul>
         */}
 
+        <FooterPage/> 
+
         </div>
+
 
 
 
