@@ -37,28 +37,28 @@ const DashboardLowyers = (props) => {
         }]
     };
 
-    const busy = {
-        months: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month) : '',
-        counts: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month_count) : '',
-    }
+    // const busy = {
+    //     months: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month) : '',
+    //     counts: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month_count) : '',
+    // }
 
-    let count = busy.counts ? (busy.counts).map(num => Number(num)) : [0];
+    // let count = busy.counts ? (busy.counts).map(num => Number(num)) : [0];
 
-    console.log("busy.counts\n\n\n", [...count])
-    const busiestDay = {
-        labels: busy.months,
-        datasets: [
-            {
-                label: 'Busiest month',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                borderColor: 'rgba(255,99,132,1)',
-                borderWidth: 1,
-                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                hoverBorderColor: 'rgba(255,99,132,1)',
-                data: [...count]
-            }
-        ]
-    };
+    // console.log("busy.counts\n\n\n", [...count])
+    // const busiestDay = {
+    //     labels: busy.months,
+    //     datasets: [
+    //         {
+    //             label: 'Busiest month',
+    //             backgroundColor: 'rgba(255,99,132,0.2)',
+    //             borderColor: 'rgba(255,99,132,1)',
+    //             borderWidth: 1,
+    //             hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+    //             hoverBorderColor: 'rgba(255,99,132,1)',
+    //             data: [...count]
+    //         }
+    //     ]
+    // };
 
     return (
         <div>
@@ -70,7 +70,7 @@ const DashboardLowyers = (props) => {
                 <h2>Number of Cases That you</h2>
                 <h2> {props.dashboardLowyers ? props.dashboardLowyers.casesNo : ''}</h2>
                 <div>
-                    <Bar data={busiestDay} />
+                    {/* <Bar data={busiestDay} /> */}
                 </div>
             </div>
 

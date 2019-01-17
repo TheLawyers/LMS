@@ -20,7 +20,7 @@ class App extends Component {
   componentDidMount() {
     this.fetchLawyers();
     this.fetchDashData();
-    this.fetchDashLaw();
+    this.fetchDashLaw()
   }
 
   fetchLawyers() {
@@ -54,7 +54,6 @@ class App extends Component {
   }
 
   fetchDashLaw(id) {
-    id = 2
     const url = `http://localhost:3000/lawyers/Dashboard/${id}`;
     fetch(url)
       .then(response => response.json())
@@ -84,17 +83,24 @@ class App extends Component {
     // return data.map((el, index) => {
     //   return el.lawyer === this.state.lawyerName ? <Profile lawyer={el} key={index} /> : ''
     // })
-
+    // const lawyerid =
     const lawyerProfile = (data.cases).filter(d => d.lawyer === this.state.lawyerName);
     console.log("lawyerProfilelawyerProfile\n\n ", lawyerProfile);
-    return (<Profile data={lawyerProfile} dashboardLowyers={this.state.dashboardLowyers} />
+    return (<Profile
+      fetchDashLaw={this.fetchDashLaw.bind(this)}
+      data={lawyerProfile}
+      dashboardLowyers={this.state.dashboardLowyers}
+    />
 
     )
   }
 
   renderShow() {
 
-    return <div> <Show hendelName={this.hendelName.bind(this)} />
+    return <div>
+      <div className="imgheader">
+        <Show hendelName={this.hendelName.bind(this)} />
+      </div>
       <Dashboard
         dashboard={this.state.dashboard}
       /></div>
@@ -108,8 +114,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+        <div className="header">
+          <div className="bar">
+            <h2>LMS</h2>
+          </div>
+        </div>
+
         {this.state.displayProfile ? this.renderProfile(this.state.lawyersData) : this.renderShow()}
-        
+
         {/* {this.state.lawyerName !== '' ? this.renderProfile(this.state.lawyers): ''} */}
       </div>
     );
