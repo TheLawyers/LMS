@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import ShowEdit from './ShowEdit';
 import LawDashboard from './DashboardLowyers';
+import ShowForm from './ShowForm';
 
 class Profile extends Component {
   constructor() {
@@ -8,7 +9,8 @@ class Profile extends Component {
     this.state = {
       showCases: true,
       case: [],
-      edit: false
+      edit: false,
+      create: false
     }
   }
 
@@ -16,7 +18,8 @@ class Profile extends Component {
     this.setState({
       case: data,
       showCases: false,
-      edite: false
+      edite: false,
+      create: false
     })
   }
 
@@ -27,13 +30,28 @@ class Profile extends Component {
     })
   }
 
-  handleSubmit(show) {
-    if(this.state.case) {
-      this.updateShow(show)
+  handelShowCreate(event) {
+
+
+    event.preventDefault();
+    this.setState({
+      create: true
+    })
+
+    console.log("\n\n\n\n\n\n", "something")
+    console.log(this.state.create)
+  }
+  
+
+  handleSubmit(data) {
+    if (this.state.case) {
+      this.updateCase(data)
     } else {
-      this.createNewShow(show)
+      this.createCase(data)
     }
   }
+
+  
 
   deleteCase(cases) {
     const url = `http://localhost:3000/lawyers/${cases.id}`;
@@ -43,6 +61,24 @@ class Profile extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  createCase(cases) {
+    const url = 'http://localhost:3000/lawyers'
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(cases)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
       })
       .catch(error => {
         console.log(error);
@@ -68,8 +104,8 @@ class Profile extends Component {
 
   }
 
-  renderEdit() {
-    // return <ShowEdit updateCase={this.updateCase.bind(this)} data={this.state.case} />
+  renderShowForm() {
+    return <ShowForm handleSubmit={this.handleSubmit.bind(this)} data={this.state.case} />
   }
 
   renderShow(data) {
@@ -89,8 +125,7 @@ class Profile extends Component {
         <p>type: {data.type}</p>
         <p>corut_name: {data.corut_name}</p>
         <p>location: {data.location}</p>
-
-        {this.state.edit ? this.renderEdit() : false}
+        {this.state.edit ? this.renderShowForm() : false}
 
       </div>
     )
@@ -112,15 +147,14 @@ class Profile extends Component {
       <div>
         <h1>Lawyer: {this.props.data[0].lawyer}</h1>
         <h2> cases </h2>
-        <button>Create</button>
+        <button onClick={this.handelShowCreate.bind(this)}>Create</button>
         {this.state.showCases ? this.renderCases() : this.renderShow(this.state.case)}
-
-      <LawDashboard
-        lawyerName={this.props.lawyerName}
-        dashboardLowyers={this.props.dashboardLowyers} />
-    </div>
-
-    
+        {this.state.create ? this.renderShowForm() : false}
+        {this.props.fetchDashLaw(this.props.data[0].lawyers_id)}
+        <LawDashboard
+          // lawyerName={this.props.lawyerName}
+          dashboardLowyers={this.props.dashboardLowyers} />
+      </div>
     );
   }
 }

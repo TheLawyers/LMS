@@ -24,7 +24,7 @@ class Show extends Component {
 
   render() {
     return (
-      <div>
+      <div className="inputName">
           <form onSubmit={this.handelSubmit.bind(this)}>
               <label>User Name:</label><input type="text" onChange={this.handleChange.bind(this)}/>
               <button>Access</button>
