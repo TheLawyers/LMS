@@ -5,7 +5,7 @@ import { Doughnut } from 'react-chartjs-2';
 const Dashboard = (props) => {
     let label = Object.keys(props.dashboard)
     let num = Object.values(props.dashboard)
-
+console.log(props.dashboard)
     const data = {
         labels:
             label
@@ -39,4 +39,3 @@ const Dashboard = (props) => {
 
 
 export default Dashboard;
-

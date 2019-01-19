@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS lawyers_dbd;
-CREATE DATABASE lawyers_dbd;
-\c lawyers_dbd
+DROP DATABASE IF EXISTS lawyers_db;
+CREATE DATABASE lawyers_db;
+\c lawyers_db
 
 CREATE TABLE lawyers(
   id serial primary key, 

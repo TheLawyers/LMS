@@ -36,6 +36,6 @@ As a lawyer I want to remember the location of my session
 As a lawyer I want to keep track of the session
 
 #  wireframes 
-
+![alt text](/Wierframelawyers.png)
 
 # unsolved problems 
