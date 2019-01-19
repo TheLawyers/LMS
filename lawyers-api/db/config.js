@@ -5,7 +5,7 @@ var pgInstance = pgPromise();
 var config = {
   host: "localhost",
   port: 5432,
-  database: 'lawyers_db',
+  database: 'lawyers_dbd',
   user: 'masarah', // your username here!!
 };
 
