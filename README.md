@@ -4,17 +4,17 @@ Signle web app that is created using React. It's very useful for any law office 
 
 # A link to your hosted working app
 
-# technologies used
+# Technologies used
 Node js 
 NPM 
 React 
 React Boostrap 
 
-# approach 
+# Aproach 
 
 Started with the datbase (API/BACKEND) , and then React (FRONT END). 
 
-# prototype 
+# Prototype 
 
 https://www.figma.com/file/NVKbHolGoKvIYPBcOS2mrfFU/Untitled?node-id=0%3A1 
 
@@ -26,7 +26,7 @@ npm install
 npm start 
 
 
-# user stories 
+# User stories 
 
 As a Lawyer, I want to organise my client, Cases and  so that I used 
 Lawyer management system
@@ -35,7 +35,10 @@ As a lawyer I want to remember the location of my session
 
 As a lawyer I want to keep track of the session
 
-#  wireframes 
+#  Wireframes 
 ![alt text](/Wierframelawyers.png)
 
-# unsolved problems 
+# Unsolved problems:
+
+sign in and out ,
+
