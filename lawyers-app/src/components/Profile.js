@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import ShowEdit from './ShowEdit';
-import LawDashboard from './DashboardLowyers';
 import ShowForm from './ShowForm';
+
 
 class Profile extends Component {
   constructor() {
@@ -15,14 +14,12 @@ class Profile extends Component {
   }
 
   handelSubmit(data) {
-    console.log(data)
     this.setState({
       case: data,
       showCases: false,
       edite: false,
       create: false
     })
-
   }
 
   handelShowEdite(event) {
@@ -38,22 +35,25 @@ class Profile extends Component {
     event.preventDefault();
     this.setState({
       create: true
+    }, function () {
+      console.log(this.state.create)
     })
 
     console.log("\n\n\n\n\n\n", "something")
-    console.log(this.state.create)
+
   }
 
-
   handleSubmit(data) {
-    if (this.state.case) {
+    /* console.log('profile handlesubmit data')
+    console.log(data);
+    console.log('state:')
+    console.log(this.state.case) */
+    if (this.state.case.length > 0) {
       this.updateCase(data)
     } else {
       this.createCase(data)
     }
   }
-
-
 
   deleteCase(cases) {
     const url = `http://localhost:3000/lawyers/${cases.id}`;
@@ -62,7 +62,7 @@ class Profile extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        this.props.deleteCases(cases.id)
       })
       .catch(error => {
         console.log(error);
@@ -70,6 +70,7 @@ class Profile extends Component {
   }
 
   createCase(cases) {
+    console.log(cases);
     const url = 'http://localhost:3000/lawyers'
     fetch(url, {
       method: 'POST',
@@ -80,7 +81,7 @@ class Profile extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        this.props.createCases(data)
       })
       .catch(error => {
         console.log(error);
@@ -98,7 +99,7 @@ class Profile extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        this.props.updateCases(data)
       })
       .catch(error => {
         console.log(error)
@@ -107,30 +108,47 @@ class Profile extends Component {
   }
 
   renderShowForm() {
-    return <ShowForm handleSubmit={this.handleSubmit.bind(this)} data={this.state.case} />
+    return <ShowForm handleSubmit={this.handleSubmit.bind(this)} data={this.state.case} idData={this.props.data}
+    toggleModal={this.toggleModal.bind(this)}
+
+    />
   }
 
   renderShow(data) {
     console.log(data)
     return (
       <div>
-        <div>
-          <button onClick={this.handelShowEdite.bind(this)}>Edit</button>
-          <button onClick={() => this.deleteCase(this.state.case)}>Delete</button>
-        </div>
-        <p>Case name: {data.case_name}</p>
-        <p>legal_instruments: {data.legal_instruments}</p>
-        <p>description: {data.description}</p>
-        <p>date: {data.date}</p>
-        <p>prosecultor: {data.prosecultor}</p>
-        <p>defendant: {data.defendant}</p>
-        <p>type: {data.type}</p>
-        <p>corut_name: {data.corut_name}</p>
-        <p>location: {data.location}</p>
-        {this.state.edit ? this.renderShowForm() : false}
+        <div className="container">
+          <div className="show">
 
+            <div>
+              <button  className="btn" onClick={this.handelShowEdite.bind(this)}>Edit</button>
+              <button  className="btn" onClick={() => this.deleteCase(this.state.case)}>Delete</button>
+            </div>
+            {/* <p>Case name: {data.case_name}</p> */}
+            <p>legal_instruments: {data.legal_instruments}</p>
+            <p>description: {data.description}</p>
+            <p>date: {data.date}</p>
+            <p>prosecultor: {data.prosecultor}</p>
+            <p>defendant: {data.defendant}</p>
+            <p>type: {data.type}</p>
+            <p>corut_name: {data.corut_name}</p>
+            <p>location: {data.location}</p>
+
+            {this.state.edit ? this.renderShowForm() : false}
+          </div>
+        </div>
       </div>
     )
+  }
+
+  toggleModal(){
+    this.setState({ 
+      showCase: true, 
+      create: false, 
+      edit: false 
+
+    })
   }
 
   renderCases() {
@@ -138,11 +156,12 @@ class Profile extends Component {
       return (
         <div>
           <div key={index} onClick={() => this.handelSubmit(el)}>
-            <p> Legal Instruments: {el.legal_instruments}</p>
-            <p> Description: {el.description}</p>
-            <p>date: {el.date}</p>
+            <div className="cases">
+              <p> <h3>Legal Instruments:</h3> {el.legal_instruments}</p>
+              <p>  <h3>Description: </h3> {el.description}</p>
+              <p> <h3>date:</h3>  {el.date}</p>
+            </div>
           </div>
-          {this.props.fetchDashLaw(el.lawyers_id)}
 
         </div>
       );
@@ -151,14 +170,22 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <h1>Lawyer: {this.props.data[0].lawyer}</h1>
-        <h2> cases </h2>
-        <button onClick={this.handelShowCreate.bind(this)}>Create</button>
-        {this.state.showCases ? this.renderCases() : this.renderShow(this.state.case)}
-        {this.state.create ? this.renderShowForm() : false}
-        <LawDashboard
-          // lawyerName={this.props.lawyerName}
-          dashboardLowyers={this.props.dashboardLowyers} />
+        <div className="proheader">
+          <button type="button" onClick={() => { this.setState({ showCases: true, create: false, edit: false }) }}>Profile</button>
+          <div className="infolaw">
+            <i class="fa fa-user-circle-o"></i>
+            <h1>Lawyer: {this.props.data[0].lawyer}</h1>
+          </div>
+        </div>
+
+        <div className="shows">
+          <div className="action-buttons">
+            <div onClick={this.handelShowCreate.bind(this)}>+</div>
+          </div>
+          {this.state.showCases ? this.renderCases() : this.renderShow(this.state.case)}
+          {this.state.create ? this.renderShowForm() : false}
+        </div>
+
 
 
       </div>
