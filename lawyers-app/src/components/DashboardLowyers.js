@@ -10,6 +10,7 @@ const DashboardLowyers = (props) => {
         legalrights: props.dashboardLowyers ? props.dashboardLowyers.legalrights : '',
         familystatus: props.dashboardLowyers ? props.dashboardLowyers.familystatus : '',
         commercial: props.dashboardLowyers ? props.dashboardLowyers.commercial : '',
+        labour: props.dashboardLowyers ? props.dashboardLowyers.labour : '',
     }
     let label = Object.keys(firstObject)
     let num = Object.values(firstObject)
@@ -38,8 +39,8 @@ const DashboardLowyers = (props) => {
     };
 
     const busy = {
-        months: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month) : '',
-        counts: props.dashboardLowyers ? props.dashboardLowyers.busiest.map(el => el.month_count) : '',
+        months: props.dashboardLowyers.busiest ? props.dashboardLowyers.busiest.map(el => el.month) : '',
+        counts: props.dashboardLowyers.busiest ? props.dashboardLowyers.busiest.map(el => el.month_count) : '',
     }
 
     let count = busy.counts ? (busy.counts).map(num => Number(num)) : [0];
@@ -60,13 +61,16 @@ const DashboardLowyers = (props) => {
         ]
     };
 
+
     return (
-        <div>
+        <div className="info1">
+            <div className="info12 ">
             <h2>The most popular type of Cases for you {props.lawyerName}</h2>
             <div>
                 <Pie data={data} />
             </div>
-            <div>
+            </div>
+            <div className="info12 ">
                 <h2>Number of Cases That you</h2>
                 <h2> {props.dashboardLowyers ? props.dashboardLowyers.casesNo : ''}</h2>
                 <div>
@@ -75,8 +79,10 @@ const DashboardLowyers = (props) => {
             </div>
 
 
-            <div><h2>Tomorrow's Cases</h2>
-                <h2> {props.dashboardLowyers ? props.dashboardLowyers.oneCase : ''}</h2>
+            <div className="info12 ">
+                <h2>Tomorrow's Cases</h2>
+                <h3> {props.dashboardLowyers.oneCase ? props.dashboardLowyers.oneCase[0].description : ''}</h3>
+                <h3> {props.dashboardLowyers.oneCase ? props.dashboardLowyers.oneCase[0].date : ''}</h3>
             </div>
         </div>
     );

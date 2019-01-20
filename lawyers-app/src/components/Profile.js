@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ShowForm from './ShowForm';
-
+import DashboardLowyers from './DashboardLowyers';
+import Location from './Location';
 
 class Profile extends Component {
   constructor() {
@@ -54,6 +55,8 @@ class Profile extends Component {
       this.createCase(data)
     }
   }
+
+
 
   deleteCase(cases) {
     const url = `http://localhost:3000/lawyers/${cases.id}`;
@@ -109,7 +112,7 @@ class Profile extends Component {
 
   renderShowForm() {
     return <ShowForm handleSubmit={this.handleSubmit.bind(this)} data={this.state.case} idData={this.props.data}
-    toggleModal={this.toggleModal.bind(this)}
+      // toggleModal={this.toggleModal.bind(this)}
 
     />
   }
@@ -122,8 +125,8 @@ class Profile extends Component {
           <div className="show">
 
             <div>
-              <button  className="btn" onClick={this.handelShowEdite.bind(this)}>Edit</button>
-              <button  className="btn" onClick={() => this.deleteCase(this.state.case)}>Delete</button>
+              <button className="btn" onClick={this.handelShowEdite.bind(this)}>Edit</button>
+              <button className="btn" onClick={() => this.deleteCase(this.state.case)}>Delete</button>
             </div>
             {/* <p>Case name: {data.case_name}</p> */}
             <p>legal_instruments: {data.legal_instruments}</p>
@@ -134,7 +137,9 @@ class Profile extends Component {
             <p>type: {data.type}</p>
             <p>corut_name: {data.corut_name}</p>
             <p>location: {data.location}</p>
-
+            <div className="show-details">
+              <Location />
+            </div>
             {this.state.edit ? this.renderShowForm() : false}
           </div>
         </div>
@@ -142,14 +147,14 @@ class Profile extends Component {
     )
   }
 
-  toggleModal(){
-    this.setState({ 
-      showCase: true, 
-      create: false, 
-      edit: false 
+  // toggleModal() {
+  //   this.setState({
+  //     showCase: true,
+  //     create: false,
+  //     edit: false
 
-    })
-  }
+  //   })
+  // }
 
   renderCases() {
     return this.props.data.map((el, index) => {
@@ -167,6 +172,7 @@ class Profile extends Component {
       );
     })
   }
+
   render() {
     return (
       <div>
@@ -177,14 +183,25 @@ class Profile extends Component {
             <h1>Lawyer: {this.props.data[0].lawyer}</h1>
           </div>
         </div>
+        <div className="well">
+          <h2>Dashboard</h2>
 
+          {/* {this.fetchDashLaw(this.state.case.lawyer_id)} */}
+        </div>
+        <div> <DashboardLowyers
+          dashboardLowyers={this.props.dashboardLowyers}
+        /></div>
+        <div className="well blockquote">
+          <h2>CASES</h2></div>
         <div className="shows">
           <div className="action-buttons">
             <div onClick={this.handelShowCreate.bind(this)}>+</div>
           </div>
+
           {this.state.showCases ? this.renderCases() : this.renderShow(this.state.case)}
           {this.state.create ? this.renderShowForm() : false}
         </div>
+
 
 
 

@@ -59,7 +59,7 @@ class App extends Component {
 
   createCases(data) {
     console.log("HE", data)
-    const newCases = this.state.lawyersData.concat([data]);
+    const newCases = this.state.lawyersData.cases.concat([data]);
     this.setState({
       lawyersData: newCases
     })
@@ -80,25 +80,23 @@ class App extends Component {
       })
   }
   fetchDashLaw(id) {
+    id=4
     const url = `http://localhost:3000/lawyers/Dashboard/${id}`;
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
+    .then(response => response.json())
+    .then(data => {
+      this.state.lawyersData.cases.filter(d => d.lawyers_id === id)
 
-        const updatedShows = this.state.lawyersData.map(el => {
-          return el.id === data.id ? data : el
-        })
-        console.log('current state: ', this.state.shows);
-        console.log('new state: ', updatedShows)
-
-        this.setState({
-          dashboardLowyers: data
-        })
+        console.log('new state: ', data)
+      // console.log(data);
+      this.setState({
+        dashboardLowyers: data
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+    })
+    .catch(error => {
+      console.log(error)
+    })
+}
 
   hendelName(name) {
     //console.log(name)
@@ -108,25 +106,36 @@ class App extends Component {
     })
   }
 
+
+
   renderProfile(data) {
     // return data.map((el, index) => {
     //   return el.lawyer === this.state.lawyerName ? <Profile lawyer={el} key={index} /> : ''
     // })
 
-    console.log(data);
+    console.log(this.state.lawyersData);
 
 
-    let lawyerProfile = data.cases.filter(d => d.lawyer === this.state.lawyerName);
+    let lawyerProfile = data.cases.filter(d => d.lawyer === this.state.lawyerName );
+    // let lawyerid = data.cases.filter(d => (d.lawyer === this.state.lawyerName).map( d => d.lawyers_id )  );
+    //  console.log(lawyerid)
+    // this.fetchDashLaw(lawyerProfile.lawyers_id)
+
     //console.log("lawyerProfilelawyerProfile\n\n " , lawyerProfile); 
-    return (
+    return (<div>
       <Profile
         createCases={this.createCases.bind(this)}
         deleteCases={this.deleteCases.bind(this)}
         updateCases={this.updateCases.bind(this)}
+        dashboardLowyers={this.state.dashboardLowyers}
+
         data={lawyerProfile}
       // fetchDashLaw={this.fetchDashLaw.bind(this)}
 
-      />)
+      />
+
+      </div>
+      )
   }
 
 
@@ -171,18 +180,21 @@ class App extends Component {
 
       <div className="info1">
 
-        <div className="info12 "><h2> News</h2>
-          <div id="breaking-news-container">
-            <div id="breaking-news-colour" className="slideup animated">
+        <div className="info12 ">
 
-            </div>
-            <div className="breaking-news-headline delay-animated2 fadein marquee">
-              {this.renderNewsData()}
-            </div>
+          <h2> News</h2>
+          <div className="newdiv">
+            {this.renderNewsData()}
           </div>
         </div>
 
-        <div className="info12"><h2>Upcoming today </h2></div>
+        <div className="info12"><h2>Upcoming today </h2>
+        <div></div>
+        <div className="come">
+        
+        </div>
+        
+        </div>
 
         <div className="info12">
           <Dashboard

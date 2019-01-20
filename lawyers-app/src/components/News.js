@@ -5,7 +5,7 @@ const News = (props) => {
     return (
         <div>
                     <h5>{props.news.author}</h5>
-                    <h3>{props.news.title}</h3>
+                    <h3 className="headline">{props.news.title}</h3>
                     <h5>{props.news.publishedAt} </h5>
                     <h4>{props.news.source.name}</h4>
         </div>
