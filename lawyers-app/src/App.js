@@ -85,7 +85,7 @@ class App extends Component {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      this.state.lawyersData.cases.filter(d => d.lawyers_id === id)
+      this.state.lawyersData.cases.fitter(d => d.lawyers_id === id)
 
         console.log('new state: ', data)
       // console.log(data);
