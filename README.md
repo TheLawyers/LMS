@@ -18,7 +18,6 @@ Started with the datbase (API/BACKEND) , and then React (FRONT END).
 
 https://www.figma.com/file/NVKbHolGoKvIYPBcOS2mrfFU/Untitled?node-id=0%3A1 
 
-Feel free to add a screenshot or two of the figma prototype directly in the ReadMe for some attention-grabbing flair.
 
 # Installation instructions 
 
