@@ -39,5 +39,5 @@ As a lawyer I want to keep track of the session
 
 # Unsolved problems:
 
-sign in and out ,
+Authentication 
 
